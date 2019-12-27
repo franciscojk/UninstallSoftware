@@ -14,6 +14,6 @@ if ($ADOTIInstalado -eq $null){
         $ADOTIReg = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\" + $ADOTIInstalado.IdentifyingNumber
     }
     $command = (Get-Item -Path $ADOTIReg | Get-ItemProperty).UninstallString + " INSTALL_PASSWORD=6B6F637967667E6266212431"
-    iex $command
+    icm -command $command
     Wait-Process -Name msiexec
 }
